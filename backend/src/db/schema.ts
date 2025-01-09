@@ -20,10 +20,12 @@ export const type1Challenges = pgTable("type_1_challenges", {
 
 export const type1Activities = pgTable("type_1_activities", {
     id: serial("id").primaryKey(),
-    goal: integer("goal").notNull(),
+    goal_1: integer("goal_1").notNull(),
+    goal_2: integer("goal_2").notNull(),
     name: text("name").notNull(),
     challenge_id: integer("challenge_id").references(() => type1Challenges.id).notNull(),
-    reward: integer("reward").notNull(),
+    reward_1: integer("reward_1").notNull(),
+    reward_2: integer("reward_2"),
     onChainID: integer("on_chain_id").notNull(),
     startDate: date("start_date").notNull(),
     endDate: date("end_date").notNull(),

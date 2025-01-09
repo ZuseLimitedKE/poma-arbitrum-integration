@@ -18,13 +18,15 @@ export class SmarContract {
         }
     }
 
-    async createActivity(gameID: number, winningPoints: number, name: string, reward: number): Promise<number> {
+    async createActivity(gameID: number, winningPoints_1: number, winningPoints_2: number, name: string, reward_1: number, reward_2: number): Promise<number> {
         try {
             const receipt = await contract.methods.createActivity(
                 BigInt(gameID),
-                BigInt(winningPoints),
+                BigInt(winningPoints_1),
+                BigInt(winningPoints_2),
                 name,
-                BigInt(reward)
+                BigInt(reward_1),
+                BigInt(reward_2),
             ).send({
                 from: account.address,
                 gas: '1000000',

@@ -45,7 +45,8 @@ async function main() {
                 const contract = activity.address;
                 const playerAddressVariable = activity.playerAddressVariable;
                 const functionName = activity.functionName;
-                const goal = activity.goal;
+                const goal_1 = activity.goal_1;
+                const goal_2 = activity.goal_2;
 
                 const players = activity.players.map((p) => p.toLowerCase());
                 // Object with found of each player
@@ -88,8 +89,12 @@ async function main() {
                                     1
                                 );
     
-                                if (found[decodedPlayer] >= goal) {
-                                    console.log("ALERT!");
+                                if (found[decodedPlayer] == goal_1) {
+                                    console.log("ALERT Goal 1");
+                                }
+
+                                if (found[decodedPlayer] >= goal_2) {
+                                    console.log("ALERT Goal 2");
                                     // Remove player
                                     const playerIndex = players.indexOf(decodedPlayer);
                                     players.splice(playerIndex, 1);

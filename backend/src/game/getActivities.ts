@@ -8,7 +8,8 @@ export interface Activity {
     address: string,
     playerAddressVariable: string,
     functionName: string,
-    goal: number,
+    goal_1: number,
+    goal_2: number,
     players: string[],
     found: Record<string, number>,
     abi: JSON
@@ -38,7 +39,8 @@ export async function getActivities(): Promise<Activity[]> {
                 // Get activites
                 const activities = await db.select({
                     id: type1Activities.id,
-                    goal: type1Activities.goal
+                    goal_1: type1Activities.goal_1,
+                    goal_2: type1Activities.goal_2
                 }).from(type1Activities)
                     .where(sql`${type1Activities.done} = false AND ${type1Activities.challenge_id} = ${challenge.id} AND ${type1Activities.startDate} < now() AND ${type1Activities.endDate} > now()`)
 
@@ -67,7 +69,8 @@ export async function getActivities(): Promise<Activity[]> {
                         address: game.address,
                         playerAddressVariable: challenge.playerAddressVariable,
                         functionName: challenge.functionName,
-                        goal: activity.goal,
+                        goal_1: activity.goal_1,
+                        goal_2: activity.goal_2,
                         players: playersToReturn,
                         found,
                         //@ts-ignore
